@@ -1,40 +1,68 @@
 using Godot;
 
-public partial class Player : CharacterBody2D
+public partial class Player : Area2D
 {
-    public const float Speed = 300.0f;
-    Vector2 ScreenSize = Vector2.Zero;
+    [Export]
+    public int Speed { get; set; } = 400; // How fast the player will move (pixels/sec).
+
+    public Vector2 ScreenSize; // Size of the game window.
 
     public override void _Ready()
     {
+        Hide();
         base._Ready();
         ScreenSize = GetViewportRect().Size;
+
     }
 
-    public override void _PhysicsProcess(double delta)
+    public void OnHit()
     {
-        Vector2 velocity = Velocity;
+        Hide(); // Player disappears after being hit.
+        EmitSignal("Hit");
+        // Must be deferred as we can't change physics properties on a physics callback.
+        GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+    }
 
-        // Get the input direction and handle the movement/deceleration.
-        // As good practice, you should replace UI actions with custom gameplay actions.
-        Vector2 direction = Input.GetVector("left", "right", "up", "down");
-        if (direction != Vector2.Zero)
+    public void Start(Vector2 position)
+    {
+        Position = position;
+        Show();
+        GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+    }
+
+    public override void _Process(double delta)
+    {
+        var velocity = Vector2.Zero; // The player's movement vector.
+
+        if (Input.IsActionPressed("right"))
         {
-            velocity.X = direction.X * Speed;
-            velocity.Y = direction.Y * Speed;
-        }
-        else
-        {
-            velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-            velocity.Y = Mathf.MoveToward(Velocity.Y, 0, Speed);
+            velocity.X += 1;
         }
 
+        if (Input.IsActionPressed("left"))
+        {
+            velocity.X -= 1;
+        }
+
+        if (Input.IsActionPressed("down"))
+        {
+            velocity.Y += 1;
+        }
+
+        if (Input.IsActionPressed("up"))
+        {
+            velocity.Y -= 1;
+        }
+
+
+        if (velocity.Length() > 0)
+        {
+            velocity = velocity.Normalized() * Speed;
+        }
         Position += velocity * (float)delta;
         Position = new Vector2(
             x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
             y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
         );
-
-        MoveAndSlide();
     }
 }
