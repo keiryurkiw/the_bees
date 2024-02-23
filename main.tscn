@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://boecmkybj8fo1"]
 
 [ext_resource type="Script" path="res://Timer.cs" id="1_fn8w0"]
-[ext_resource type="PackedScene" uid="uid://djs7ycvv1ltq4" path="res://player.tscn" id="2_6iooa"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="2_6iooa"]
 
 [node name="Main" type="Node2D"]
 
