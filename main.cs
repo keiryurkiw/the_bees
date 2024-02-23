@@ -37,8 +37,8 @@ public partial class main : Node2D
 
 	public void OnBeeTimerTimeout()
 	{
-		Bee bee = beeScene.Instantiate<Bee>();
 
+		Node2D bee = beeScene.Instantiate<Node2D>();
 		PathFollow2D beeSpawnLocation = GetNode<PathFollow2D>("BeePath/BeeSpawnPath");
 		beeSpawnLocation.ProgressRatio = GD.Randf();
 
@@ -48,8 +48,7 @@ public partial class main : Node2D
 		bee.Rotation = direction;
 
 		Vector2 velocity = new Vector2((float)GD.RandRange(150.0, 250.0), 0);
-		bee.LinearVelocity = velocity.Rotated(direction);
-
+		bee.GetNode<RigidBody2D>("RigidBody2D").LinearVelocity = velocity.Rotated(direction);
 		AddChild(bee);
 	}
 
