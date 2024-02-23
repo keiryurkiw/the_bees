@@ -27,7 +27,7 @@ public partial class Player : Area2D
     {
         Position = position;
         Show();
-        GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+        GetNode<CollisionShape2D>("Collider2").Disabled = false;
     }
 
     public override void _Process(double delta)

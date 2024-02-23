@@ -18,7 +18,24 @@ public partial class main : Node2D
 		GetNode<Godot.Timer>("StartTimer").Start();
 	}
 
-	public void onBeeTimerTimout()
+	public void endGame()
+	{
+		GetNode<Godot.Timer>("BeeTimer").Stop();
+		GetNode<Godot.Timer>("ScoreTimer").Stop();
+	}
+
+	public void OnScoreTimerTimeout()
+	{
+		++score;
+	}
+
+	public void OnStartTimerTimeout()
+	{
+		GetNode<Godot.Timer>("BeeTimer").Start();
+		GetNode<Godot.Timer>("ScoreTimer").Start();
+	}
+
+	public void OnBeeTimerTimout()
 	{
 		Bee bee = beeScene.Instantiate<Bee>();
 
@@ -34,5 +51,10 @@ public partial class main : Node2D
 		bee.LinearVelocity = velocity.Rotated(direction);
 
 		AddChild(bee);
+	}
+
+	public override void _Ready()
+	{
+		newGame();
 	}
 }
