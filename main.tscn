@@ -22,4 +22,16 @@ curve = SubResource("Curve2D_wr6ny")
 
 [node name="BeeSpawnPath" type="PathFollow2D" parent="BeePath"]
 
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="BeeTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [editable path="CharacterBody2D"]
