@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtmvh4amc47xu"]
+[gd_scene load_steps=4 format=3 uid="uid://bytncg0856uxq"]
 
 [ext_resource type="Script" path="res://Player.cs" id="1_mpblk"]
 [ext_resource type="Texture2D" uid="uid://bbykxxu68nqfl" path="res://icon.svg" id="2_47sxc"]
@@ -11,7 +11,6 @@ script = ExtResource("1_mpblk")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, 7.10543e-15)
-scale = Vector2(1, 1)
 texture = ExtResource("2_47sxc")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
