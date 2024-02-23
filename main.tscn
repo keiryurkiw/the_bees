@@ -14,7 +14,7 @@ point_count = 5
 script = ExtResource("1_ftgfb")
 beeScene = ExtResource("2_j420c")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_6iooa")]
+[node name="Player" parent="." instance=ExtResource("2_6iooa")]
 position = Vector2(613, 349)
 
 [node name="BeePath" type="Path2D" parent="."]
@@ -34,4 +34,4 @@ one_shot = true
 [node name="BeeTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[editable path="CharacterBody2D"]
+[editable path="Player"]

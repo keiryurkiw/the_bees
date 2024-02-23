@@ -7,7 +7,18 @@ public partial class main : Node2D
 
 	private int score = 0;
 
-	private void onBeeTimerTimout()
+	public void newGame()
+	{
+		score = 0;
+
+		Player player = GetNode<Player>("Player");
+		Marker2D startPosition = GetNode<Marker2D>("StartPosition");
+		player.Start(startPosition.Position);
+
+		GetNode<Godot.Timer>("StartTimer").Start();
+	}
+
+	public void onBeeTimerTimout()
 	{
 		Bee bee = beeScene.Instantiate<Bee>();
 
