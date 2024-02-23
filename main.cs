@@ -35,7 +35,7 @@ public partial class main : Node2D
 		GetNode<Godot.Timer>("ScoreTimer").Start();
 	}
 
-	public void OnBeeTimerTimout()
+	public void OnBeeTimerTimeout()
 	{
 		Bee bee = beeScene.Instantiate<Bee>();
 
