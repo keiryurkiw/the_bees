@@ -4,7 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://bbykxxu68nqfl" path="res://icon.svg" id="2_rpmwb"]
 
 [node name="Bee" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_mask = 0
+gravity_scale = 0.0
 script = ExtResource("1_13srr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("2_rpmwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="RigidBody2D"]

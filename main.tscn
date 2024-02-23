@@ -1,39 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://boecmkybj8fo1"]
+[gd_scene load_steps=5 format=3 uid="uid://boecmkybj8fo1"]
 
-[ext_resource type="Script" path="res://Timer.cs" id="1_fn8w0"]
+[ext_resource type="Script" path="res://main.cs" id="1_ftgfb"]
 [ext_resource type="PackedScene" path="res://player.tscn" id="2_6iooa"]
+[ext_resource type="PackedScene" uid="uid://dvixjxua0amwj" path="res://Bee.tscn" id="2_j420c"]
+
+[sub_resource type="Curve2D" id="Curve2D_wr6ny"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Main" type="Node2D"]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 4096.0
-autostart = true
-
-[node name="TimerScript" type="Node" parent="Timer"]
-script = ExtResource("1_fn8w0")
-
-[node name="PointsText" type="RichTextLabel" parent="Timer"]
-offset_left = 267.0
-offset_top = 15.0
-offset_right = 1140.0
-offset_bottom = 167.0
-theme_override_font_sizes/normal_font_size = 76
-bbcode_enabled = true
-text = "[right]points"
-fit_content = true
-
-[node name="TimerText" type="RichTextLabel" parent="Timer"]
-offset_left = 12.0
-offset_top = -1.0
-offset_right = 885.0
-offset_bottom = 151.0
-theme_override_font_sizes/normal_font_size = 76
-text = "timer"
-fit_content = true
+script = ExtResource("1_ftgfb")
+beeScene = ExtResource("2_j420c")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_6iooa")]
 
 [node name="CollisionShape2D2" parent="CharacterBody2D" index="1"]
 position = Vector2(573, 315.62)
+
+[node name="BeePath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_wr6ny")
+
+[node name="BeeSpawnPath" type="PathFollow2D" parent="BeePath"]
 
 [editable path="CharacterBody2D"]
