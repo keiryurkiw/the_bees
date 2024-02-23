@@ -1,9 +1,5 @@
 using Godot;
 
-public partial class Bee : Node2D
+public partial class Bee : RigidBody2D
 {
-	private void OnVisibleOnScreenNotifier2DScreenExited()
-	{
-		QueueFree();
-	}
 }
