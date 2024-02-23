@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://boecmkybj8fo1"]
 
 [ext_resource type="Script" path="res://Timer.cs" id="1_fn8w0"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="2_6iooa"]
+[ext_resource type="PackedScene" uid="uid://dtmvh4amc47xu" path="res://player.tscn" id="2_6iooa"]
 
 [node name="Main" type="Node2D"]
 
@@ -32,8 +32,6 @@ text = "timer"
 fit_content = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_6iooa")]
-
-[node name="CollisionShape2D2" parent="CharacterBody2D" index="1"]
-position = Vector2(573, 315.62)
+position = Vector2(613, 349)
 
 [editable path="CharacterBody2D"]
